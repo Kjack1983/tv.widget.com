@@ -8,6 +8,7 @@
 		return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 	}
 
+	// Supported resolutions.
 	var config = {
 		supported_resolutions: ["1", "3", "5", "15", "30", "60", "120", "240", "D"]
 	};
