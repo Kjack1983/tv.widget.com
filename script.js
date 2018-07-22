@@ -21,7 +21,7 @@
 	* properties are supported.
 	*
 	* @para {callback}
- 	*/
+	*/
 	Datafeed.prototype.onReady = function(callback) {
 		if ($('#easymarkets-charts iframe').length) {
 			var iframe_id =  $('#easymarkets-charts iframe').attr('id');
@@ -40,7 +40,7 @@
 		console.log('CALLED SEARCH SYMBOLS');
 	}
 
-	// CHART LOAD 2
+	// CHART RESOLVE SYMBOL.
 	Datafeed.prototype.resolveSymbol = function(symbolName, onSymbolResolvedCallback, onResolveErrorCallback) {
 
 		console.log('CALLED RESOLVE SYMBOL');
