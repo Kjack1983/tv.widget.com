@@ -40,7 +40,7 @@
 		console.log('CALLED SEARCH SYMBOLS');
 	}
 
-		// CHART LOAD 2
+	// CHART LOAD 2
 	Datafeed.prototype.resolveSymbol = function(symbolName, onSymbolResolvedCallback, onResolveErrorCallback) {
 
 		console.log('CALLED RESOLVE SYMBOL');
@@ -104,6 +104,7 @@
 		};
 
 		var api_root = 'https://min-api.cryptocompare.com';
+		console.log(${api_root});
 
 		$.ajax({
 			cache: false,
