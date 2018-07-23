@@ -105,7 +105,6 @@
 		};
 
 		var api_root = 'https://min-api.cryptocompare.com';
-		console.log(${api_root});
 
 		$.ajax({
 			cache: false,
