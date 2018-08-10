@@ -67,7 +67,7 @@
 			pricescale: 100000000,
 			has_intraday: true,
 			intraday_multipliers: ["1", "3", "5", "15", "30", "60", "120", "240", "D"],
-			supported_resolutions: ["1", "3", "5", "15", "30", "60", "120", "240", "D"],
+			supported_resolutions: config.supported_resolutions,
 			volume_precision: 8,
 			data_status: 'streaming',
 		}
@@ -105,16 +105,38 @@
 		};
 
 		var api_root = 'https://min-api.cryptocompare.com';
-		console.log(${api_root});
-
+		
 		$.ajax({
 			cache: false,
 			dataType: "json",
 			url: `${api_root}${url}?` + jQuery.param(qs),
 			success: function(data) {
 
+                //bar array
+                var bars = [];
+
 				if (data.Data.length && data.Response === 'Success') {
-					var chart_data = [];
+
+                    //map bar array
+                    bars = data.Data.map(function(el, index) {
+ 
+                            //return result. time in milliseconds.
+                            return  {
+                                time: el.time * 1000, //TradingView requires bar time in ms
+                                low: el.low,
+                                high: el.high,
+                                open: el.open,
+                                close: el.close,
+                                //volume: el.volumefrom
+                            };
+					});
+
+                    if (bars.length) {
+                        onHistoryCallback(bars, {noData: true});
+                    } else {
+                        onHistoryCallback(bars, {noData: false});
+                    }
+                    /*var chart_data = [];
 
 					//find Min and MAX from sample 0 to 2 index
 					data.Data.forEach(function(el, index) {
@@ -138,10 +160,11 @@
 					}
 					else {
 						onHistoryCallback(chart_data, {noData: false});
-					}
+					}*/
+
 				} else {
-					onErrorCallback('NO DATA');
-					//onHistoryCallback(chart_data, {noData: false});
+					//onErrorCallback('NO DATA');
+					onHistoryCallback(chart_data, {noData: false});
 				}
 			},
 			error: function(data) {
