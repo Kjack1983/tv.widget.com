@@ -90,7 +90,7 @@
 		// Split Symbol
 		var split_symbol = symbolInfo.name.split(/[:/]/);
 
-		// Fetch date to ISO.
+		// Fetch date to ISO. add
 		var toDate = new Date(to).format('isoDateTime').replace('T', ' ');
 
 		// Does not cotain minutes at the moment.
