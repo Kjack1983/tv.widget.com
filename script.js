@@ -93,7 +93,7 @@
 		// Fetch date to ISO. add
 		var toDate = new Date(to).format('isoDateTime').replace('T', ' ');
 
-		// Does not cotain minutes at the moment.
+		// Does not cotain minutes at the moment. add 
 		var url = resolution === 'D' ? '/data/histoday' : resolution >= 60 ? '/data/histohour' : '/data/histohour'
 
 		var qs = {
